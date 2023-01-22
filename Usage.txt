@@ -1,3 +1,6 @@
+First, use CrystalTile2 (https://www.romhacking.net/utilities/818/) or equivalent to unpack the ROM.
+Then grab one of the lng files inside the LOC folder.
+
 To split the file, drag and drop it onto splitLang.bat, or run "python splitLang.py XXX.lng."
 
 This will produce a set of files which are just numbered, since I can't be bothered to figure out
@@ -5,7 +8,3 @@ where everything is.
 
 To merge everything back, just drag and drop onto mergeLang.bat, or run "python mergeLang.py XXX.lng."
 This will produce a new file named output_XXX.lng, which you can then reinsert into the ROM.
-
-Unfortunately, it has been discovered that regular Notepad at least does not handle these files well.
-You should use either a Hex Editor, or better yet Notepad++ (https://notepad-plus-plus.org/). The key
-thing is to ensure that the 00/NUL's are all still there.
