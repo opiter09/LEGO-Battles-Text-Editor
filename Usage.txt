@@ -8,3 +8,7 @@ where everything is.
 
 To merge everything back, just drag and drop onto mergeLang.bat, or run "python mergeLang.py XXX.lng."
 This will produce a new file named output_XXX.lng, which you can then reinsert into the ROM.
+
+Among the split files you will find a few that appear to be blank. Do NOT, under ANY circumstances,
+EVER edit these files. Similarly, please completely avoid the file ByteCounts.txt. All of these
+are needed for the back end of reconstruction, and should not be changed.
