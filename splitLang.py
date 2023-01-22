@@ -9,6 +9,7 @@ try:
 except OSError as error:
     pass
 
+zeroList = []
 count = 0
 holding = 0
 currentMax = int.from_bytes(bytE[16:20], "little")
@@ -23,14 +24,25 @@ for i in range(12, 0x2FE9, 4):
     fileName = sys.argv[1].split("\\")[-1].split(".")[0] + "_" + "langFiles/" + str(count).zfill(4) + ".txt"
 
     if (newOffset > currentMax):
+        newFile = open(fileName, "wb")
         if (holding == 0):
-            newFile = open(fileName, "wb")
-            newFile.write(bytE[oldOffset:newOffset])
+            nullCount = bytE[oldOffset:newOffset].decode("UTF-8", errors = "ignore").count("\0")
+            if (oldOffset < (newOffset - nullCount)):
+                zeroList.append(nullCount)
+                newFile.write(bytE[oldOffset:(newOffset - nullCount)])
+            else:
+                zeroList.append(0)
+                newFile.write(bytE[oldOffset:newOffset])
             newFile.close()
             currentMax = newOffset
         else:
-            newFile = open(fileName, "wb")
-            newFile.write(bytE[holding:newOffset])
+            nullCount = bytE[holding:newOffset].decode("UTF-8", errors = "ignore").count("\0")
+            if (holding < (newOffset - nullCount)):
+                zeroList.append(nullCount)
+                newFile.write(bytE[holding:(newOffset - nullCount)])
+            else:
+                zeroList.append(0)
+                newFile.write(bytE[holding:newOffset])
             newFile.close()
             currentMax = newOffset
             holding = 0
@@ -49,5 +61,12 @@ for i in range(12, 0x2FE9, 4):
                 if (reading[i] == 0) and (reading[i + 1] > 0):
                     os.remove(fileName)
                     break
+
+nulls = open(sys.argv[1].split("\\")[-1].split(".")[0] + "_" + "langFiles" + "/ByteCounts.txt", "wt")
+nulls.close()
+nulls = open(sys.argv[1].split("\\")[-1].split(".")[0] + "_" + "langFiles" + "/ByteCounts.txt", "at")
+for number in zeroList:
+    nulls.write(str(number) + "\n")
+nulls.close()
 
 print("The first unit name is at 387.txt")
