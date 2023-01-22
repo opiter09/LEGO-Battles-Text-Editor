@@ -18,8 +18,8 @@ for i in range(1, 3064):
 
 offset = int.from_bytes(bytE[12:16], "little")
 for i in range(1, 3064):
-    if (os.path.exists(folder + str(i).zfill(4) + ".bin") == True):
-        size = os.stat(folder + str(i).zfill(4) + ".bin").st_size
+    if (os.path.exists(folder + str(i).zfill(4) + ".txt") == True):
+        size = os.stat(folder + str(i).zfill(4) + ".txt").st_size
         offset = offset + size
         newFile.write(offset.to_bytes(4, "little"))
         newOffsetList.append(offset)
@@ -33,8 +33,8 @@ for i in range(1, 3064):
             newFile.write(bytE[(12 + (i * 4)):(16 + (i * 4))])
 
 for i in range(1, 3065):
-    if (os.path.exists(folder + str(i).zfill(4) + ".bin") == True):
-        file = open(folder + str(i).zfill(4) + ".bin", "rb")
+    if (os.path.exists(folder + str(i).zfill(4) + ".txt") == True):
+        file = open(folder + str(i).zfill(4) + ".txt", "rb")
         newFile.write(file.read())
         file.close()
 newFile.close()

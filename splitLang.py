@@ -20,7 +20,7 @@ for i in range(12, 0x2FE9, 4):
     if (i == 0x2FE8):
         newOffset = os.stat(sys.argv[1]).st_size
     
-    fileName = sys.argv[1].split("\\")[-1].split(".")[0] + "_" + "langFiles/" + str(count).zfill(4) + ".bin"
+    fileName = sys.argv[1].split("\\")[-1].split(".")[0] + "_" + "langFiles/" + str(count).zfill(4) + ".txt"
 
     if (newOffset > currentMax):
         if (holding == 0):
@@ -50,4 +50,4 @@ for i in range(12, 0x2FE9, 4):
                     os.remove(fileName)
                     break
 
-print("The first unit name is at 387.bin")
+print("The first unit name is at 387.txt")
