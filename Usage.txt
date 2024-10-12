@@ -1,12 +1,12 @@
 First, use CrystalTile2 (https://www.romhacking.net/utilities/818/) or equivalent to unpack the ROM.
-Then grab one of the lng files inside the LOC folder.
+Then grab one of the .lng files inside the LOC folder.
 
 To split the file, drag and drop it onto splitLang.bat, or run "python splitLang.py XXX.lng."
 
 This will produce a set of files which are just numbered, since I can't be bothered to figure out
 where everything is.
 
-To merge everything back, just drag and drop onto mergeLang.bat, or run "python mergeLang.py XXX.lng."
+To merge everything back, just drag and drop the same .lng file onto mergeLang.bat, or run "python mergeLang.py XXX.lng."
 This will produce a new file named output_XXX.lng, which you can then reinsert into the ROM.
 
 Among the split files you will find a few that appear to be blank. Do NOT, under ANY circumstances,
