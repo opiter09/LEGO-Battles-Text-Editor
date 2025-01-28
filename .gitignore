@@ -1,0 +1,5 @@
+*.txt
+*.lng
+*.nds
+*.sav
+NDS_UNPACK/*
