@@ -3,3 +3,5 @@
 *.nds
 *.sav
 NDS_UNPACK/*
+*.2
+*.xdelta
