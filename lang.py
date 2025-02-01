@@ -60,7 +60,7 @@ def splitFile(folder, path):
                     if (reading[i] == 0) and (reading[i + 1] > 0):
                         os.remove(fileName)
                         break
-    print(path.split("\\")[-1].split(".")[0] + " finished")
+    print(path.split("\\")[-1].split(".")[0].replace("_", " ") + " finished")
     
 def mergeFile(folder, path):
     binn2 = open(path, "rb")
@@ -114,7 +114,7 @@ def mergeFile(folder, path):
     newFile.close()
     os.remove(folder + path.split("\\")[-1])
     os.rename("output_" + path.split("\\")[-1], folder + path.split("\\")[-1])
-    print(path.split("\\")[-1].split(".")[0] + " finished")
+    print(path.split("\\")[-1].split(".")[0].replace("_", " ") + " finished")
 
 if (os.path.exists("NDS_UNPACK") == False):
     subprocess.run([ "dslazy.bat", "UNPACK", sys.argv[1] ])
